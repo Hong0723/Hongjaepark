@@ -9,6 +9,5 @@ import java.util.Scanner;
                         System.out.print("long ");
                     }
                     System.out.println("int");
-                } }
-            
-                
+                }
+    }

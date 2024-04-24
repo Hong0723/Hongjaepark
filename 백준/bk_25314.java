@@ -1,5 +1,7 @@
-    import java.util.Scanner;
-    public class Main {
+package 백준;
+
+import java.util.Scanner;
+    public class bk_25314 {
 
         
                 public static void main(String[] args)  {
@@ -11,10 +13,10 @@
                     
                     }
                     System.out.println("int");
+                    
                 
                 
-                
-                
+
                 } }
             
                 

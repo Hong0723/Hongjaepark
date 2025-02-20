@@ -1,7 +1,7 @@
-package java;
+package Java;
 
 import java.util.*;
-public class lab2 {
+public class Lab2 {
     // 1번
     public static int forecast(){
         Random random = new Random();

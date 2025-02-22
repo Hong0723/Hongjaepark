@@ -1,4 +1,4 @@
-package FirstProject.src.main.java.com.example.FirstProject;
+package com.example.FirstProject;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

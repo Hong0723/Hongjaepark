@@ -4,11 +4,17 @@ package com.example.FirstProject.controller;
 import com.example.FirstProject.dto.ArticleForm;
 import com.example.FirstProject.entity.Article;
 import com.example.FirstProject.repository.ArticleRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
+@Slf4j
 
 @Controller
 public class ArticleController
@@ -23,11 +29,30 @@ public class ArticleController
 
     @PostMapping("/articles/create")
     public String createArticle(ArticleForm form){
-        System.out.println(form.toString());
+        // System.out.println(form.toString());
+        log.info(form.toString());
         Article article = form.toEntity(); // DTO를 엔티티로 변환
-        System.out.println(article.toString());
+        //System.out.println(article.toString());
+        log.info(article.toString());
         Article saved = articleRepository.save(article);
-        System.out.println(saved.toString());
+        //System.out.println(saved.toString());
+        log.info(saved.toString());
         return"";
     }
+
+    @GetMapping("/articles/{id}")
+    public String show(@PathVariable Long id, Model model){
+        log.info("id = " + id);
+        Article articleEntity = articleRepository.findById(id).orElse(null);
+        model.addAttribute("article",articleEntity);
+        return"articles/show";
+
+    }
+    @GetMapping("/articles")
+    public String index(Model model){
+        List<Article> articleEntityList = articleRepository.findAll();
+        model.addAttribute("articleList", articleEntityList);
+        return"articles/index";
+    }
+
 }

@@ -1,12 +1,17 @@
 package com.example.FirstProject.dto;
 
 import com.example.FirstProject.entity.Article;
+import lombok.AllArgsConstructor;
+import lombok.ToString;
+
 
 public class ArticleForm
-{   private String title;
+{   private Long id;
+    private String title;
     private String content;
 
-    public ArticleForm(String title, String content) {
+    public ArticleForm(Long id, String title, String content) {
+        this.id = id;
         this.title = title;
         this.content = content;
     }
@@ -14,12 +19,13 @@ public class ArticleForm
     @Override
     public String toString() {
         return "ArticleForm{" +
-                "title='" + title + '\'' +
+                "id=" + id +
+                ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 '}';
     }
 
     public Article toEntity() {
-        return new Article(null,title,content);
+        return new Article(id,title,content);
     }
 }

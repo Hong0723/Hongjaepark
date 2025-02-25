@@ -3,10 +3,12 @@ package com.example.FirstProject.dto;
 import com.example.FirstProject.entity.Member;
 
 public class MemberForm {
+    private Long id;
     private String email;
     private String password;
 
-    public MemberForm(String email, String password) {
+    public MemberForm(Long id, String email, String password) {
+        this.id = id;
         this.email = email;
         this.password = password;
     }
@@ -14,12 +16,13 @@ public class MemberForm {
     @Override
     public String toString() {
         return "MemberForm{" +
-                "email='" + email + '\'' +
+                "id=" + id +
+                ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }
 
     public Member toEntity() {
-        return new Member(null,email,password);
+        return new Member(id,email,password);
     }
 }

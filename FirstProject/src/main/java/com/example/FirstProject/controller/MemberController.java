@@ -18,7 +18,7 @@ import java.util.List;
 public class MemberController
 {
     @Autowired
-    private MemberRepository MemberRepository;
+    private MemberRepository memberRepository;
 
     @GetMapping("/members/new")
     public String newMemberForm() {
@@ -32,23 +32,23 @@ public class MemberController
         Member member = form.toEntity();
         //System.out.println(member.toString());
         log.info(member.toString());
-        Member saved = MemberRepository.save(member);
+        Member saved = memberRepository.save(member);
         //System.out.println(saved.toString());
         log.info(saved.toString());
-        return "";
+        return "redirect:/members/"+ saved.getId();
     }
 
     @GetMapping("/members/{id}")
     public String show(@PathVariable Long id, Model model){
         log.info("id= " + id);
-        Member memberEntity = MemberRepository.findById(id).orElse(null);
+        Member memberEntity = memberRepository.findById(id).orElse(null);
         model.addAttribute("member",memberEntity);
         return"members/show";
     }
 
     @GetMapping("/members")
     public String index(Model model){
-        List<Member> memberEntityList = MemberRepository.findAll();
+        List<Member> memberEntityList = memberRepository.findAll();
         model.addAttribute("memberList",memberEntityList);
         return"members/index";
     }

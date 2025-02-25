@@ -32,4 +32,7 @@ public class Article {
                 '}';
     }
 
+    public Long getId() {
+        return id;
+    }
 }

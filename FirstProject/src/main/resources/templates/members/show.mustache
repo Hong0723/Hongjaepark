@@ -9,15 +9,16 @@
     </tr>
     </thead>
     <tbody>
-    {{#memberList}}
+    {{#member}}
         <tr>
             <th>{{id}}</th>
             <td>{{email}}</td>
             <td>{{password}}</td>
         </tr>
-    {{/memberList}}
+    {{/member}}
 
     </tbody>
 </table>
+<a href = "/members">Go to Member List</a>
 
 {{>layouts/footer}}

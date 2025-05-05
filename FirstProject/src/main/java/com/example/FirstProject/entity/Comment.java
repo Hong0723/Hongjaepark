@@ -25,7 +25,6 @@ public class Comment {
     @Column
     private String body;
 
-
     public static Comment createComment(CommentDto dto, Article article) {
         if (dto.getId() != null)
             throw new IllegalArgumentException("댓글 생성 실패! 댓글의 id가 없어야 합니다.");
